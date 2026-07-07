@@ -12,11 +12,11 @@ if(!isset($_SESSION['login'])){
 include "koneksi.php";
 include "header.php";
 
-$id=$_GET['id'];
+$id = $_GET['id'];
 
-$query=mysqli_query($conn,"SELECT * FROM anggota WHERE id='$id'");
+$query = mysqli_query($conn,"SELECT * FROM anggota WHERE id='$id'");
 
-$data=mysqli_fetch_assoc($query);
+$data = mysqli_fetch_assoc($query);
 
 ?>
 
@@ -120,6 +120,39 @@ Aktif
 <option value="Tidak Aktif" <?=($data['status']=="Tidak Aktif")?"selected":"";?>>
 
 Tidak Aktif
+
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Keterangan</label>
+
+<select
+name="keterangan"
+class="form-select">
+
+<option value="Aktif mengikuti kegiatan STT"
+<?=($data['keterangan']=="Aktif mengikuti kegiatan STT")?"selected":"";?>>
+
+Aktif mengikuti kegiatan STT
+
+</option>
+
+<option value="Menikah"
+<?=($data['keterangan']=="Menikah")?"selected":"";?>>
+
+Menikah
+
+</option>
+
+<option value="Bekerja di luar daerah"
+<?=($data['keterangan']=="Bekerja di luar daerah")?"selected":"";?>>
+
+Bekerja di luar daerah
 
 </option>
 

@@ -68,7 +68,8 @@ include "header.php";
                                 name="nama"
                                 id="nama"
                                 class="form-control"
-                                placeholder="Masukkan nama anggota">
+                                placeholder="Masukkan nama anggota"
+                                required>
 
                         </div>
 
@@ -84,17 +85,18 @@ include "header.php";
 
                             <select
                                 name="tempekan"
-                                class="form-select">
+                                class="form-select"
+                                required>
 
                                 <option value="">-- Pilih Tempekan --</option>
 
-                                <option>Kaja Kangin</option>
+                                <option value="Kaja Kangin">Kaja Kangin</option>
 
-                                <option>Kaja Kauh</option>
+                                <option value="Kaja Kauh">Kaja Kauh</option>
 
-                                <option>Kelod Kangin</option>
+                                <option value="Kelod Kangin">Kelod Kangin</option>
 
-                                <option>Kelod Kauh</option>
+                                <option value="Kelod Kauh">Kelod Kauh</option>
 
                             </select>
 
@@ -115,7 +117,8 @@ include "header.php";
                                 id="alamat"
                                 rows="3"
                                 class="form-control"
-                                placeholder="Masukkan alamat anggota"></textarea>
+                                placeholder="Masukkan alamat anggota"
+                                required></textarea>
 
                         </div>
 
@@ -134,13 +137,14 @@ include "header.php";
                                 name="no_hp"
                                 id="no_hp"
                                 class="form-control"
-                                placeholder="08xxxxxxxxxx">
+                                placeholder="08xxxxxxxxxx"
+                                required>
 
                         </div>
 
                         <!-- Status -->
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
 
                             <label class="form-label">
 
@@ -150,7 +154,9 @@ include "header.php";
 
                             <select
                                 name="status"
-                                class="form-select">
+                                id="status"
+                                class="form-select"
+                                onchange="ubahKeterangan()">
 
                                 <option value="Aktif">
 
@@ -161,6 +167,31 @@ include "header.php";
                                 <option value="Tidak Aktif">
 
                                     Tidak Aktif
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Keterangan -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+
+                                Keterangan
+
+                            </label>
+
+                            <select
+                                name="keterangan"
+                                id="keterangan"
+                                class="form-select">
+
+                                <option value="Aktif mengikuti kegiatan STT">
+
+                                    Aktif mengikuti kegiatan STT
 
                                 </option>
 
@@ -205,5 +236,36 @@ include "header.php";
     </div>
 
 </section>
+
+<script>
+
+function ubahKeterangan(){
+
+    let status = document.getElementById("status").value;
+    let keterangan = document.getElementById("keterangan");
+
+    if(status === "Aktif"){
+
+        keterangan.innerHTML = `
+            <option value="Aktif mengikuti kegiatan STT">
+                Aktif mengikuti kegiatan STT
+            </option>
+        `;
+
+    }else{
+
+        keterangan.innerHTML = `
+            <option value="">-- Pilih Keterangan --</option>
+            <option value="Menikah">Menikah</option>
+            <option value="Bekerja di luar daerah">Bekerja di luar daerah</option>
+        `;
+
+    }
+
+}
+
+window.onload = ubahKeterangan;
+
+</script>
 
 <?php include "footer.php"; ?>

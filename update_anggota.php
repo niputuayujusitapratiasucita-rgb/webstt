@@ -2,26 +2,28 @@
 
 session_start();
 
-if(!isset($_SESSION['login'])){
+if (!isset($_SESSION['login'])) {
 
-header("Location: login.php");
-exit();
+    header("Location: login.php");
+    exit();
 
 }
 
 include "koneksi.php";
 
-$id=$_POST['id'];
+$id = $_POST['id'];
 
-$nama=$_POST['nama'];
+$nama = $_POST['nama'];
 
-$tempekan=$_POST['tempekan'];
+$tempekan = $_POST['tempekan'];
 
-$alamat=$_POST['alamat'];
+$alamat = $_POST['alamat'];
 
-$no_hp=$_POST['no_hp'];
+$no_hp = $_POST['no_hp'];
 
-$status=$_POST['status'];
+$status = $_POST['status'];
+
+$keterangan = $_POST['keterangan'];
 
 mysqli_query($conn,
 
@@ -35,7 +37,9 @@ alamat='$alamat',
 
 no_hp='$no_hp',
 
-status='$status'
+status='$status',
+
+keterangan='$keterangan'
 
 WHERE id='$id'
 

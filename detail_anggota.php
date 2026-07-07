@@ -164,6 +164,38 @@ if (!$data) {
 
                     </div>
 
+                    <!-- Keterangan -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-semibold">
+
+                            Keterangan
+
+                        </label>
+
+                        <div class="form-control">
+
+                            <?php
+
+                            if ($data['status'] == "Aktif") {
+
+                                echo "Aktif mengikuti kegiatan STT";
+
+                            } else {
+
+                                echo !empty($data['keterangan'])
+                                    ? htmlspecialchars($data['keterangan'])
+                                    : "-";
+
+                            }
+
+                            ?>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <hr>

@@ -16,7 +16,7 @@ $query = mysqli_query($conn, "SELECT * FROM anggota ORDER BY nama ASC");
             </h2>
 
             <p class="text-muted">
-                Daftar anggota aktif STT Widyatmika.
+                Daftar anggota STT Widyatmika.
             </p>
 
         </div>
@@ -75,9 +75,9 @@ $query = mysqli_query($conn, "SELECT * FROM anggota ORDER BY nama ASC");
 
                                 <th>Tempekan</th>
 
-                                <th>No. HP</th>
-
                                 <th>Status</th>
+
+                                <th>Keterangan</th>
 
                                 <th width="120" class="text-center">Aksi</th>
 
@@ -100,27 +100,15 @@ $query = mysqli_query($conn, "SELECT * FROM anggota ORDER BY nama ASC");
                                     <tr>
 
                                         <td class="text-center">
-
                                             <?= $no++; ?>
-
                                         </td>
 
                                         <td>
-
                                             <?= htmlspecialchars($data['nama']); ?>
-
                                         </td>
 
                                         <td>
-
                                             <?= htmlspecialchars($data['tempekan']); ?>
-
-                                        </td>
-
-                                        <td>
-
-                                            <?= htmlspecialchars($data['no_hp']); ?>
-
                                         </td>
 
                                         <td>
@@ -134,6 +122,34 @@ $query = mysqli_query($conn, "SELECT * FROM anggota ORDER BY nama ASC");
                                             } else {
 
                                                 echo '<span class="status-nonaktif">Tidak Aktif</span>';
+
+                                            }
+
+                                            ?>
+
+                                        </td>
+
+                                        <td>
+
+                                            <?php
+
+                                            if ($data['status'] == "Aktif") {
+
+                                                echo '<small class="text-success">Aktif mengikuti kegiatan STT</small>';
+
+                                            } else {
+
+                                                if (!empty($data['keterangan'])) {
+
+                                                    echo '<small class="text-muted">'
+                                                        . htmlspecialchars($data['keterangan']) .
+                                                        '</small>';
+
+                                                } else {
+
+                                                    echo '<small class="text-muted">-</small>';
+
+                                                }
 
                                             }
 
